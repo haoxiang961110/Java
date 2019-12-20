@@ -5,33 +5,33 @@
   
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <link rel="dns-prefetch" href="http://yoursite.com">
+  <link rel="dns-prefetch" href="https://haoxiang961110.github.io">
   <title>基础内存图原理总结 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="基础内存图原理总结1.数组内存图1.1单个数组的内存图 ​       程序开始运行,main方法首先加载到栈内存,在栈内存开辟空间,然后开始加载main方法里的内容,首先是一个数组对象int[] arr的创建,数组的对象名int[] arr会加载进入main方法所在栈内存的空间,而new的数组对象new int[3]会在堆内存开辟空间,有一个地址,开始进行数据的初始化,这里由于运用静态初始化,且">
 <meta property="og:type" content="article">
 <meta property="og:title" content="基础内存图原理总结">
-<meta property="og:url" content="http://yoursite.com/2019/12/20/%E5%9F%BA%E7%A1%80%E5%86%85%E5%AD%98%E5%9B%BE%E5%8E%9F%E7%90%86%E6%80%BB%E7%BB%93/index.html">
+<meta property="og:url" content="https://haoxiang961110.github.io/2019/12/20/%E5%9F%BA%E7%A1%80%E5%86%85%E5%AD%98%E5%9B%BE%E5%8E%9F%E7%90%86%E6%80%BB%E7%BB%93/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="基础内存图原理总结1.数组内存图1.1单个数组的内存图 ​       程序开始运行,main方法首先加载到栈内存,在栈内存开辟空间,然后开始加载main方法里的内容,首先是一个数组对象int[] arr的创建,数组的对象名int[] arr会加载进入main方法所在栈内存的空间,而new的数组对象new int[3]会在堆内存开辟空间,有一个地址,开始进行数据的初始化,这里由于运用静态初始化,且">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://yoursite.com/2019/12/20/%E5%9F%BA%E7%A1%80%E5%86%85%E5%AD%98%E5%9B%BE%E5%8E%9F%E7%90%86%E6%80%BB%E7%BB%93/%E5%9F%BA%E7%A1%80%E5%86%85%E5%AD%98%E5%9B%BE%E5%8E%9F%E7%90%86%E6%80%BB%E7%BB%93%5C01%E5%8D%95%E4%B8%AA%E6%95%B0%E7%BB%84%E5%86%85%E5%AD%98%E5%9B%BE.png">
-<meta property="og:image" content="http://yoursite.com/2019/12/20/%E5%9F%BA%E7%A1%80%E5%86%85%E5%AD%98%E5%9B%BE%E5%8E%9F%E7%90%86%E6%80%BB%E7%BB%93/%E5%9F%BA%E7%A1%80%E5%86%85%E5%AD%98%E5%9B%BE%E5%8E%9F%E7%90%86%E6%80%BB%E7%BB%93%5C02%E4%B8%A4%E4%B8%AA%E6%95%B0%E7%BB%84%E5%86%85%E5%AD%98%E5%9B%BE.png">
-<meta property="og:image" content="http://yoursite.com/2019/12/20/%E5%9F%BA%E7%A1%80%E5%86%85%E5%AD%98%E5%9B%BE%E5%8E%9F%E7%90%86%E6%80%BB%E7%BB%93/%E5%9F%BA%E7%A1%80%E5%86%85%E5%AD%98%E5%9B%BE%E5%8E%9F%E7%90%86%E6%80%BB%E7%BB%93%5C03%E5%A4%9A%E4%B8%AA%E6%95%B0%E7%BB%84%E6%8C%87%E5%90%91%E7%9B%B8%E5%90%8C.png">
-<meta property="og:image" content="http://yoursite.com/2019/12/20/%E5%9F%BA%E7%A1%80%E5%86%85%E5%AD%98%E5%9B%BE%E5%8E%9F%E7%90%86%E6%80%BB%E7%BB%93/%E5%9F%BA%E7%A1%80%E5%86%85%E5%AD%98%E5%9B%BE%E5%8E%9F%E7%90%86%E6%80%BB%E7%BB%93%5C04%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B%E5%86%85%E5%AD%98%E5%9B%BE.png">
-<meta property="og:image" content="http://yoursite.com/2019/12/20/%E5%9F%BA%E7%A1%80%E5%86%85%E5%AD%98%E5%9B%BE%E5%8E%9F%E7%90%86%E6%80%BB%E7%BB%93/%E5%9F%BA%E7%A1%80%E5%86%85%E5%AD%98%E5%9B%BE%E5%8E%9F%E7%90%86%E6%80%BB%E7%BB%93%5C05%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B%E5%86%85%E5%AD%98%E5%9B%BE.png">
-<meta property="og:image" content="http://yoursite.com/2019/12/20/%E5%9F%BA%E7%A1%80%E5%86%85%E5%AD%98%E5%9B%BE%E5%8E%9F%E7%90%86%E6%80%BB%E7%BB%93/%E5%9F%BA%E7%A1%80%E5%86%85%E5%AD%98%E5%9B%BE%E5%8E%9F%E7%90%86%E6%80%BB%E7%BB%93%5C06%E5%8D%95%E4%B8%AA%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%86%85%E5%AD%98%E5%9B%BE.png">
-<meta property="og:image" content="http://yoursite.com/2019/12/20/%E5%9F%BA%E7%A1%80%E5%86%85%E5%AD%98%E5%9B%BE%E5%8E%9F%E7%90%86%E6%80%BB%E7%BB%93/%E5%9F%BA%E7%A1%80%E5%86%85%E5%AD%98%E5%9B%BE%E5%8E%9F%E7%90%86%E6%80%BB%E7%BB%93%5C07%E4%B8%A4%E4%B8%AA%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%86%85%E5%AD%98%E5%9B%BE.png">
-<meta property="og:image" content="http://yoursite.com/2019/12/20/%E5%9F%BA%E7%A1%80%E5%86%85%E5%AD%98%E5%9B%BE%E5%8E%9F%E7%90%86%E6%80%BB%E7%BB%93/%E5%9F%BA%E7%A1%80%E5%86%85%E5%AD%98%E5%9B%BE%E5%8E%9F%E7%90%86%E6%80%BB%E7%BB%93%5C08%E4%B8%A4%E4%B8%AA%E5%AF%B9%E8%B1%A1%E6%8C%87%E5%90%91%E7%9B%B8%E5%90%8C.png">
-<meta property="og:image" content="http://yoursite.com/2019/12/20/%E5%9F%BA%E7%A1%80%E5%86%85%E5%AD%98%E5%9B%BE%E5%8E%9F%E7%90%86%E6%80%BB%E7%BB%93/%E5%9F%BA%E7%A1%80%E5%86%85%E5%AD%98%E5%9B%BE%E5%8E%9F%E7%90%86%E6%80%BB%E7%BB%93%5C09this%E5%86%85%E5%AD%98%E5%9B%BE.png">
-<meta property="og:image" content="http://yoursite.com/2019/12/20/%E5%9F%BA%E7%A1%80%E5%86%85%E5%AD%98%E5%9B%BE%E5%8E%9F%E7%90%86%E6%80%BB%E7%BB%93/%E5%9F%BA%E7%A1%80%E5%86%85%E5%AD%98%E5%9B%BE%E5%8E%9F%E7%90%86%E6%80%BB%E7%BB%93%5C10%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%B8%B8%E9%87%8F%E6%B1%A0.png">
-<meta property="og:image" content="http://yoursite.com/2019/12/20/%E5%9F%BA%E7%A1%80%E5%86%85%E5%AD%98%E5%9B%BE%E5%8E%9F%E7%90%86%E6%80%BB%E7%BB%93/%E5%9F%BA%E7%A1%80%E5%86%85%E5%AD%98%E5%9B%BE%E5%8E%9F%E7%90%86%E6%80%BB%E7%BB%93%5C11super%E5%86%85%E5%AD%98%E5%9B%BE.png">
-<meta property="og:image" content="http://yoursite.com/2019/12/20/%E5%9F%BA%E7%A1%80%E5%86%85%E5%AD%98%E5%9B%BE%E5%8E%9F%E7%90%86%E6%80%BB%E7%BB%93/%E5%9F%BA%E7%A1%80%E5%86%85%E5%AD%98%E5%9B%BE%E5%8E%9F%E7%90%86%E6%80%BB%E7%BB%93%5C12static%E5%86%85%E5%AD%98%E5%9B%BE.png">
+<meta property="og:image" content="https://haoxiang961110.github.io/2019/12/20/%E5%9F%BA%E7%A1%80%E5%86%85%E5%AD%98%E5%9B%BE%E5%8E%9F%E7%90%86%E6%80%BB%E7%BB%93/%E5%9F%BA%E7%A1%80%E5%86%85%E5%AD%98%E5%9B%BE%E5%8E%9F%E7%90%86%E6%80%BB%E7%BB%93%5C01%E5%8D%95%E4%B8%AA%E6%95%B0%E7%BB%84%E5%86%85%E5%AD%98%E5%9B%BE.png">
+<meta property="og:image" content="https://haoxiang961110.github.io/2019/12/20/%E5%9F%BA%E7%A1%80%E5%86%85%E5%AD%98%E5%9B%BE%E5%8E%9F%E7%90%86%E6%80%BB%E7%BB%93/%E5%9F%BA%E7%A1%80%E5%86%85%E5%AD%98%E5%9B%BE%E5%8E%9F%E7%90%86%E6%80%BB%E7%BB%93%5C02%E4%B8%A4%E4%B8%AA%E6%95%B0%E7%BB%84%E5%86%85%E5%AD%98%E5%9B%BE.png">
+<meta property="og:image" content="https://haoxiang961110.github.io/2019/12/20/%E5%9F%BA%E7%A1%80%E5%86%85%E5%AD%98%E5%9B%BE%E5%8E%9F%E7%90%86%E6%80%BB%E7%BB%93/%E5%9F%BA%E7%A1%80%E5%86%85%E5%AD%98%E5%9B%BE%E5%8E%9F%E7%90%86%E6%80%BB%E7%BB%93%5C03%E5%A4%9A%E4%B8%AA%E6%95%B0%E7%BB%84%E6%8C%87%E5%90%91%E7%9B%B8%E5%90%8C.png">
+<meta property="og:image" content="https://haoxiang961110.github.io/2019/12/20/%E5%9F%BA%E7%A1%80%E5%86%85%E5%AD%98%E5%9B%BE%E5%8E%9F%E7%90%86%E6%80%BB%E7%BB%93/%E5%9F%BA%E7%A1%80%E5%86%85%E5%AD%98%E5%9B%BE%E5%8E%9F%E7%90%86%E6%80%BB%E7%BB%93%5C04%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B%E5%86%85%E5%AD%98%E5%9B%BE.png">
+<meta property="og:image" content="https://haoxiang961110.github.io/2019/12/20/%E5%9F%BA%E7%A1%80%E5%86%85%E5%AD%98%E5%9B%BE%E5%8E%9F%E7%90%86%E6%80%BB%E7%BB%93/%E5%9F%BA%E7%A1%80%E5%86%85%E5%AD%98%E5%9B%BE%E5%8E%9F%E7%90%86%E6%80%BB%E7%BB%93%5C05%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B%E5%86%85%E5%AD%98%E5%9B%BE.png">
+<meta property="og:image" content="https://haoxiang961110.github.io/2019/12/20/%E5%9F%BA%E7%A1%80%E5%86%85%E5%AD%98%E5%9B%BE%E5%8E%9F%E7%90%86%E6%80%BB%E7%BB%93/%E5%9F%BA%E7%A1%80%E5%86%85%E5%AD%98%E5%9B%BE%E5%8E%9F%E7%90%86%E6%80%BB%E7%BB%93%5C06%E5%8D%95%E4%B8%AA%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%86%85%E5%AD%98%E5%9B%BE.png">
+<meta property="og:image" content="https://haoxiang961110.github.io/2019/12/20/%E5%9F%BA%E7%A1%80%E5%86%85%E5%AD%98%E5%9B%BE%E5%8E%9F%E7%90%86%E6%80%BB%E7%BB%93/%E5%9F%BA%E7%A1%80%E5%86%85%E5%AD%98%E5%9B%BE%E5%8E%9F%E7%90%86%E6%80%BB%E7%BB%93%5C07%E4%B8%A4%E4%B8%AA%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%86%85%E5%AD%98%E5%9B%BE.png">
+<meta property="og:image" content="https://haoxiang961110.github.io/2019/12/20/%E5%9F%BA%E7%A1%80%E5%86%85%E5%AD%98%E5%9B%BE%E5%8E%9F%E7%90%86%E6%80%BB%E7%BB%93/%E5%9F%BA%E7%A1%80%E5%86%85%E5%AD%98%E5%9B%BE%E5%8E%9F%E7%90%86%E6%80%BB%E7%BB%93%5C08%E4%B8%A4%E4%B8%AA%E5%AF%B9%E8%B1%A1%E6%8C%87%E5%90%91%E7%9B%B8%E5%90%8C.png">
+<meta property="og:image" content="https://haoxiang961110.github.io/2019/12/20/%E5%9F%BA%E7%A1%80%E5%86%85%E5%AD%98%E5%9B%BE%E5%8E%9F%E7%90%86%E6%80%BB%E7%BB%93/%E5%9F%BA%E7%A1%80%E5%86%85%E5%AD%98%E5%9B%BE%E5%8E%9F%E7%90%86%E6%80%BB%E7%BB%93%5C09this%E5%86%85%E5%AD%98%E5%9B%BE.png">
+<meta property="og:image" content="https://haoxiang961110.github.io/2019/12/20/%E5%9F%BA%E7%A1%80%E5%86%85%E5%AD%98%E5%9B%BE%E5%8E%9F%E7%90%86%E6%80%BB%E7%BB%93/%E5%9F%BA%E7%A1%80%E5%86%85%E5%AD%98%E5%9B%BE%E5%8E%9F%E7%90%86%E6%80%BB%E7%BB%93%5C10%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%B8%B8%E9%87%8F%E6%B1%A0.png">
+<meta property="og:image" content="https://haoxiang961110.github.io/2019/12/20/%E5%9F%BA%E7%A1%80%E5%86%85%E5%AD%98%E5%9B%BE%E5%8E%9F%E7%90%86%E6%80%BB%E7%BB%93/%E5%9F%BA%E7%A1%80%E5%86%85%E5%AD%98%E5%9B%BE%E5%8E%9F%E7%90%86%E6%80%BB%E7%BB%93%5C11super%E5%86%85%E5%AD%98%E5%9B%BE.png">
+<meta property="og:image" content="https://haoxiang961110.github.io/2019/12/20/%E5%9F%BA%E7%A1%80%E5%86%85%E5%AD%98%E5%9B%BE%E5%8E%9F%E7%90%86%E6%80%BB%E7%BB%93/%E5%9F%BA%E7%A1%80%E5%86%85%E5%AD%98%E5%9B%BE%E5%8E%9F%E7%90%86%E6%80%BB%E7%BB%93%5C12static%E5%86%85%E5%AD%98%E5%9B%BE.png">
 <meta property="article:published_time" content="2019-12-20T06:23:06.000Z">
 <meta property="article:modified_time" content="2019-12-20T06:36:47.114Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/2019/12/20/%E5%9F%BA%E7%A1%80%E5%86%85%E5%AD%98%E5%9B%BE%E5%8E%9F%E7%90%86%E6%80%BB%E7%BB%93/%E5%9F%BA%E7%A1%80%E5%86%85%E5%AD%98%E5%9B%BE%E5%8E%9F%E7%90%86%E6%80%BB%E7%BB%93%5C01%E5%8D%95%E4%B8%AA%E6%95%B0%E7%BB%84%E5%86%85%E5%AD%98%E5%9B%BE.png">
+<meta name="twitter:image" content="https://haoxiang961110.github.io/2019/12/20/%E5%9F%BA%E7%A1%80%E5%86%85%E5%AD%98%E5%9B%BE%E5%8E%9F%E7%90%86%E6%80%BB%E7%BB%93/%E5%9F%BA%E7%A1%80%E5%86%85%E5%AD%98%E5%9B%BE%E5%8E%9F%E7%90%86%E6%80%BB%E7%BB%93%5C01%E5%8D%95%E4%B8%AA%E6%95%B0%E7%BB%84%E5%86%85%E5%AD%98%E5%9B%BE.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -324,7 +324,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/12/20/%E5%9F%BA%E7%A1%80%E5%86%85%E5%AD%98%E5%9B%BE%E5%8E%9F%E7%90%86%E6%80%BB%E7%BB%93/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=https://haoxiang961110.github.io/2019/12/20/%E5%9F%BA%E7%A1%80%E5%86%85%E5%AD%98%E5%9B%BE%E5%8E%9F%E7%90%86%E6%80%BB%E7%BB%93/" alt="微信分享二维码">
     </div>
 </div>
 
